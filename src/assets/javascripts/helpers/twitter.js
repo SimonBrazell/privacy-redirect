@@ -20,7 +20,6 @@ const redirects = [
   "https://nitter.mastodont.cat",
   "https://nitter.dark.fail",
   "https://nitter.tedomum.net",
-  "https://nitter.cattube.org",
   "https://nitter.fdn.fr",
   "https://nitter.1d4.us",
   "https://nitter.kavin.rocks",
