@@ -19,8 +19,8 @@ const redirects = [
   { link: "https://whoogle.sdf.org", q: "/search" },
   { link: "https://whoogle.himiko.cloud", q: "/search" },
   { link: "https://whoogle-search.zeet.app", q: "/search" },
-  { link: "http://s.alefvanoon.xyz", q: "/search" },
-  { link: "http://ss.alefvanoon.xyz", q: "/search" },
+  { link: "https://s.alefvanoon.xyz", q: "/search" },
+  { link: "https://ss.alefvanoon.xyz", q: "/search" },
 
 ];
 
