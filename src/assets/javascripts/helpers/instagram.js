@@ -14,6 +14,7 @@ const redirects = [
   "https://bibliogram.kavin.rocks",
   "https://insta.trom.tf",
   "https://bibliogram.hamster.dance",
+  "https://biblio.alefvanoon.xyz",
 ];
 const reservedPaths = [
   "about",
