@@ -21,7 +21,6 @@ const redirects = [
   { link: "https://whoogle-search.zeet.app", q: "/search" },
   { link: "https://s.alefvanoon.xyz", q: "/search" },
   { link: "https://ss.alefvanoon.xyz", q: "/search" },
-
 ];
 
 export default {
