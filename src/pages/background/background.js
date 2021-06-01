@@ -573,16 +573,11 @@ browser.webRequest.onBeforeRequest.addListener(
 
 browser.runtime.onInstalled.addListener((details) => {
   browser.storage.sync.get(
-    ["disableSearchEngine", "disableSimplyTranslate"],
+    ["disableSearchEngine"],
     (result) => {
       if (result.disableSearchEngine === undefined) {
         browser.storage.sync.set({
           disableSearchEngine: true,
-        });
-      }
-      if (result.disableSimplyTranslate === undefined) {
-        browser.storage.sync.set({
-          disableSimplyTranslate: true,
         });
       }
     }
