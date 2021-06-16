@@ -11,6 +11,7 @@ const redirects = [
   { link: "https://search.disroot.org", q: "/" },
   { link: "https://searx.tuxcloud.net", q: "/" },
   { link: "https://searx.ninja", q: "/" },
+  { link: "https://sx.alefvanoon.xyz", q: "/" },
   { link: "https://tromland.org/searx", q: "/search" },
   { link: "https://engine.presearch.org", q: "/search" },
   { link: "https://searx.silkky.cloud", q: "/" },
@@ -19,6 +20,8 @@ const redirects = [
   { link: "https://whoogle.sdf.org", q: "/search" },
   { link: "https://whoogle.himiko.cloud", q: "/search" },
   { link: "https://whoogle-search.zeet.app", q: "/search" },
+  { link: "https://s.alefvanoon.xyz", q: "/search" },
+  { link: "https://ss.alefvanoon.xyz", q: "/search" },
 ];
 
 export default {
