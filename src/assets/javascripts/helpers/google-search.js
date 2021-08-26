@@ -17,7 +17,7 @@ const redirects = [
   { link: "https://search.trom.tf", q: "/" },
   { link: "https://whooglesearch.net", q: "/search" },
   { link: "https://whoogle.sdf.org", q: "/search" },
-  { link: "https://whoogle-production.up.railway.app", q: "/search" },
+  { link: "https://whoogle-npexc.up.railway.app", q: "/search" },
   { link: "https://whoogle.silkky.cloud", q: "/search" },
 ];
 
