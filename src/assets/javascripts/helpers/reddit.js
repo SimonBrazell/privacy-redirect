@@ -11,14 +11,13 @@ const redirects = [
   "https://libredd.it",
   "https://libreddit.spike.codes",
   "https://libreddit.kavin.rocks",
-  "https://libreddit.insanity.wtf",
-  "https://libreddit.dothq.co",
+  "https://libreddit.exonip.de"
   "https://libreddit.silkky.cloud",
-  "https://libreddit.himiko.cloud",
   "https://reddit.artemislena.eu",
   "https://reddit.git-bruh.duckdns.org",
   // teddit: privacy w/ old UI
   "https://teddit.net",
+  "https://teddit.namazso.eu",
   "https://teddit.ggc-project.de",
   "https://teddit.kavin.rocks",
   "https://old.reddit.com", // desktop
