@@ -13,6 +13,7 @@ const redirects = [
   "https://libreddit.kavin.rocks",
   "https://libreddit.exonip.de"
   "https://libreddit.silkky.cloud",
+  "https://lr.riverside.rocks",
   "https://reddit.artemislena.eu",
   "https://reddit.git-bruh.duckdns.org",
   // teddit: privacy w/ old UI
