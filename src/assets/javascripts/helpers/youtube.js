@@ -29,7 +29,7 @@ const redirects = [
   "https://y.com.cm",
   "https://yewtu.be",
   "https://ytb.trom.tf",
-  "https://invidious.silkky.cloud",
+  "https://piped.silkky.cloud",
   "https://inv.riverside.rocks",
   "https://tube.incognet.io",
   "https://invidious.namazso.eu",
