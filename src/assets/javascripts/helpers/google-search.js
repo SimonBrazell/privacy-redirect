@@ -18,7 +18,6 @@ const redirects = [
   { link: "https://whooglesearch.net", q: "/search" },
   { link: "https://whoogle.sdf.org", q: "/search" },
   { link: "https://search.garudalinux.org", q: "/search" },
-  { link: "https://whoogle.silkky.cloud", q: "/search" },
 ];
 
 export default {
