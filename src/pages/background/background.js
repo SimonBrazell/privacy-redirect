@@ -8,7 +8,7 @@ import mapsHelper from "../../assets/javascripts/helpers/google-maps.js";
 import redditHelper from "../../assets/javascripts/helpers/reddit.js";
 import searchHelper from "../../assets/javascripts/helpers/google-search.js";
 import googleTranslateHelper from "../../assets/javascripts/helpers/google-translate.js";
-import wikipediaHelper from "../../assets/javascripts/helpers/wikipedia.js";
+import wikilessHelper from "../../assets/javascripts/helpers/wikiless.js";
 
 const nitterInstances = twitterHelper.redirects;
 const twitterDomains = twitterHelper.targets;
@@ -34,8 +34,8 @@ const searchEngineInstances = searchHelper.redirects;
 const simplyTranslateInstances = googleTranslateHelper.redirects;
 const simplyTranslateDefault = simplyTranslateInstances[0];
 const googleTranslateDomains = googleTranslateHelper.targets;
-const wikipediaInstances = wikipediaHelper.redirects;
-const wikipediaDomains = wikipediaHelper.targets;
+const wikilessInstances = wikilessHelper.redirects;
+const wikilessDomains = wikilessHelper.targets;
 
 let disableNitter;
 let disableInvidious;
@@ -44,7 +44,7 @@ let disableOsm;
 let disableReddit;
 let disableSearchEngine;
 let disableSimplyTranslate;
-let disableWikipedia;
+let disableWikiless;
 let nitterInstance;
 let invidiousInstance;
 let bibliogramInstance;
@@ -52,7 +52,7 @@ let osmInstance;
 let redditInstance;
 let searchEngineInstance;
 let simplyTranslateInstance;
-let wikipediaInstance;
+let wikilessInstance;
 let alwaysProxy;
 let onlyEmbeddedVideo;
 let videoQuality;
@@ -65,7 +65,7 @@ let useFreeTube;
 let nitterRandomPool;
 let invidiousRandomPool;
 let bibliogramRandomPool;
-let wikipediaRandomPool;
+let wikilessRandomPool;
 let exceptions;
 
 window.browser = window.browser || window.chrome;
@@ -79,7 +79,7 @@ browser.storage.sync.get(
     "redditInstance",
     "searchEngineInstance",
     "simplyTranslateInstance",
-    "wikipediaInstance",
+    "wikilessInstance",
     "disableNitter",
     "disableInvidious",
     "disableBibliogram",
@@ -87,7 +87,7 @@ browser.storage.sync.get(
     "disableReddit",
     "disableSearchEngine",
     "disableSimplyTranslate",
-    "disableWikipedia",
+    "disableWikiless",
     "alwaysProxy",
     "onlyEmbeddedVideo",
     "videoQuality",
@@ -100,7 +100,7 @@ browser.storage.sync.get(
     "nitterRandomPool",
     "invidiousRandomPool",
     "bibliogramRandomPool",
-    "wikipediaRandomPool",
+    "wikilessRandomPool",
     "exceptions",
   ],
   (result) => {
@@ -112,14 +112,14 @@ browser.storage.sync.get(
     searchEngineInstance = result.searchEngineInstance;
     simplyTranslateInstance =
       result.simplyTranslateInstance || simplyTranslateDefault;
-    wikipediaInstance = result.wikipediaInstance;
+    wikilessInstance = result.wikilessInstance;
     disableNitter = result.disableNitter;
     disableInvidious = result.disableInvidious;
     disableBibliogram = result.disableBibliogram;
     disableOsm = result.disableOsm;
     disableReddit = result.disableReddit;
     disableSearchEngine = result.disableSearchEngine;
-    disableWikipedia = result.disableWikipedia;
+    disableWikiless = result.disableWikiless;
     disableSimplyTranslate = result.disableSimplyTranslate;
     alwaysProxy = result.alwaysProxy;
     onlyEmbeddedVideo = result.onlyEmbeddedVideo;
@@ -144,9 +144,9 @@ browser.storage.sync.get(
     bibliogramRandomPool = result.bibliogramRandomPool
       ? result.bibliogramRandomPool.split(",")
       : commonHelper.filterInstances(bibliogramInstances);
-    wikipediaRandomPool = result.wikipediaRandomPool
-      ? result.wikipediaRandomPool.split(",")
-      : commonHelper.filterInstances(wikipediaInstances);
+    wikilessRandomPool = result.wikilessRandomPool
+      ? result.wikilessRandomPool.split(",")
+      : commonHelper.filterInstances(wikilessInstances);
   }
 );
 
@@ -167,8 +167,8 @@ browser.storage.onChanged.addListener((changes) => {
     simplyTranslateInstance =
       changes.simplyTranslateInstance.newValue || simplyTranslateDefault;
   }
-  if ("wikipediaInstance" in changes) {
-    wikipediaInstance = changes.wikipediaInstance.newValue;
+  if ("wikilessInstance" in changes) {
+    wikilessInstance = changes.wikilessInstance.newValue;
   }
   if ("redditInstance" in changes) {
     redditInstance = changes.redditInstance.newValue || redditDefault;
@@ -197,8 +197,8 @@ browser.storage.onChanged.addListener((changes) => {
   if ("disableSimplyTranslate" in changes) {
     disableSimplyTranslate = changes.disableSimplyTranslate.newValue;
   }
-  if ("disableWikipedia" in changes) {
-    disableWikipedia = changes.disableWikipedia.newValue;
+  if ("disableWikiless" in changes) {
+    disableWikiless = changes.disableWikiless.newValue;
   }
   if ("alwaysProxy" in changes) {
     alwaysProxy = changes.alwaysProxy.newValue;
@@ -236,8 +236,8 @@ browser.storage.onChanged.addListener((changes) => {
   if ("bibliogramRandomPool" in changes) {
     bibliogramRandomPool = changes.bibliogramRandomPool.newValue.split(",");
   }
-  if ("wikipediaRandomPool" in changes) {
-    wikipediaRandomPool = changes.wikipediaRandomPool.newValue.split(",");
+  if ("wikilessRandomPool" in changes) {
+    wikilessRandomPool = changes.wikilessRandomPool.newValue.split(",");
   }
   if ("exceptions" in changes) {
     exceptions = changes.exceptions.newValue.map((e) => {
@@ -548,8 +548,8 @@ function redirectGoogleTranslate(url, initiator) {
   return `${simplyTranslateInstance}/${url.search}`;
 }
 
-function redirectWikipedia(url, initiator) {
-  if (disableWikipedia || isException(url, initiator)) {
+function redirectWikiless(url, initiator) {
+  if (disableWikiless || isException(url, initiator)) {
     return null;
   }
   let GETArguments = [];
@@ -562,7 +562,7 @@ function redirectWikipedia(url, initiator) {
     }
   }
   let link = `${
-    wikipediaInstance || commonHelper.getRandomInstance(wikipediaRandomPool)
+    wikilessInstance || commonHelper.getRandomInstance(wikilessRandomPool)
   }${url.pathname}`;
   let urlSplit = url.host.split(".");
   if (urlSplit[0] != "wikipedia" && urlSplit[0] != "www") {
@@ -624,9 +624,9 @@ browser.webRequest.onBeforeRequest.addListener(
       redirect = {
         redirectUrl: redirectGoogleTranslate(url, initiator),
       };
-    } else if (url.host.match(wikipediaDomains)) {
+    } else if (url.host.match(wikilessDomains)) {
       redirect = {
-        redirectUrl: redirectWikipedia(url, initiator),
+        redirectUrl: redirectWikiless(url, initiator),
       };
     }
     if (redirect && redirect.redirectUrl) {
@@ -648,7 +648,7 @@ browser.webRequest.onBeforeRequest.addListener(
 
 browser.runtime.onInstalled.addListener((details) => {
   browser.storage.sync.get(
-    ["disableSearchEngine", "disableSimplyTranslate", "disableWikipedia"],
+    ["disableSearchEngine", "disableSimplyTranslate", "disableWikiless"],
     (result) => {
       if (result.disableSearchEngine === undefined) {
         browser.storage.sync.set({
@@ -660,9 +660,9 @@ browser.runtime.onInstalled.addListener((details) => {
           disableSimplyTranslate: true,
         });
       }
-      if (result.disableWikipedia === undefined) {
+      if (result.disableWikiless === undefined) {
         browser.storage.sync.set({
-          disableWikipedia: true,
+          disableWikiless: true,
         });
       }
     }

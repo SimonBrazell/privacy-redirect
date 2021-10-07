@@ -7,7 +7,7 @@ let disableOsm = document.querySelector("#disable-osm");
 let disableReddit = document.querySelector("#disable-reddit");
 let disableSearchEngine = document.querySelector("#disable-searchEngine");
 let disableSimplyTranslate = document.querySelector("#disable-simplyTranslate");
-let disableWikipedia = document.querySelector("#disable-wikipedia");
+let disableWikiless = document.querySelector("#disable-wikiless");
 let version = document.querySelector("#version");
 
 window.browser = window.browser || window.chrome;
@@ -21,7 +21,7 @@ browser.storage.sync.get(
     "disableReddit",
     "disableSearchEngine",
     "disableSimplyTranslate",
-    "disableWikipedia",
+    "disableWikiless",
     "theme",
   ],
   (result) => {
@@ -33,7 +33,7 @@ browser.storage.sync.get(
     disableReddit.checked = !result.disableReddit;
     disableSearchEngine.checked = !result.disableSearchEngine;
     disableSimplyTranslate.checked = !result.disableSimplyTranslate;
-    disableWikipedia.checked = !result.disableWikipedia;
+    disableWikiless.checked = !result.disableWikiless;
   }
 );
 
@@ -67,8 +67,8 @@ disableSimplyTranslate.addEventListener("change", (event) => {
   browser.storage.sync.set({ disableSimplyTranslate: !event.target.checked });
 });
 
-disableWikipedia.addEventListener("change", (event) => {
-  browser.storage.sync.set({ disableWikipedia: !event.target.checked });
+disableWikiless.addEventListener("change", (event) => {
+  browser.storage.sync.set({ disableWikiless: !event.target.checked });
 });
 
 document.querySelector("#more-options").addEventListener("click", () => {
