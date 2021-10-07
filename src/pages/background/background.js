@@ -4,6 +4,7 @@ import commonHelper from "../../assets/javascripts/helpers/common.js";
 import twitterHelper from "../../assets/javascripts/helpers/twitter.js";
 import youtubeHelper from "../../assets/javascripts/helpers/youtube.js";
 import instagramHelper from "../../assets/javascripts/helpers/instagram.js";
+import imgurHelper from "../../assets/javascripts/helpers/imgur.js";
 import mapsHelper from "../../assets/javascripts/helpers/google-maps.js";
 import redditHelper from "../../assets/javascripts/helpers/reddit.js";
 import searchHelper from "../../assets/javascripts/helpers/google-search.js";
@@ -17,6 +18,8 @@ const invidiousInstances = youtubeHelper.redirects;
 const instagramDomains = instagramHelper.targets;
 const bibliogramInstances = instagramHelper.redirects;
 const instagramReservedPaths = instagramHelper.reservedPaths;
+const rimguInstances = imgurHelper.redirects;
+const imgurRegex = imgurHelper.targets;
 const bibliogramBypassPaths = instagramHelper.bypassPaths;
 const osmDefault = mapsHelper.redirects[0];
 const googleMapsRegex = mapsHelper.targets;
@@ -41,6 +44,7 @@ const wikipediaRegex = wikipediaHelper.targets;
 let disableNitter;
 let disableInvidious;
 let disableBibliogram;
+let disableRimgu;
 let disableOsm;
 let disableReddit;
 let disableSearchEngine;
@@ -49,6 +53,7 @@ let disableWikipedia;
 let nitterInstance;
 let invidiousInstance;
 let bibliogramInstance;
+let rimguInstance;
 let osmInstance;
 let redditInstance;
 let searchEngineInstance;
@@ -66,6 +71,7 @@ let useFreeTube;
 let nitterRandomPool;
 let invidiousRandomPool;
 let bibliogramRandomPool;
+let rimguRandomPool;
 let exceptions;
 
 window.browser = window.browser || window.chrome;
@@ -75,6 +81,7 @@ browser.storage.sync.get(
     "nitterInstance",
     "invidiousInstance",
     "bibliogramInstance",
+    "rimguInstance",
     "osmInstance",
     "redditInstance",
     "searchEngineInstance",
@@ -83,6 +90,7 @@ browser.storage.sync.get(
     "disableNitter",
     "disableInvidious",
     "disableBibliogram",
+    "disableRimgu",
     "disableOsm",
     "disableReddit",
     "disableSearchEngine",
@@ -100,12 +108,14 @@ browser.storage.sync.get(
     "nitterRandomPool",
     "invidiousRandomPool",
     "bibliogramRandomPool",
+    "rimguRandomPool",
     "exceptions",
   ],
   (result) => {
     nitterInstance = result.nitterInstance;
     invidiousInstance = result.invidiousInstance;
     bibliogramInstance = result.bibliogramInstance;
+    rimguInstance = result.rimguInstance;
     osmInstance = result.osmInstance || osmDefault;
     redditInstance = result.redditInstance || redditDefault;
     searchEngineInstance = result.searchEngineInstance;
@@ -115,6 +125,7 @@ browser.storage.sync.get(
     disableNitter = result.disableNitter;
     disableInvidious = result.disableInvidious;
     disableBibliogram = result.disableBibliogram;
+    disableRimgu = result.disableRimgu;
     disableOsm = result.disableOsm;
     disableReddit = result.disableReddit;
     disableSearchEngine = result.disableSearchEngine;
@@ -143,6 +154,9 @@ browser.storage.sync.get(
     bibliogramRandomPool = result.bibliogramRandomPool
       ? result.bibliogramRandomPool.split(",")
       : commonHelper.filterInstances(bibliogramInstances);
+    rimguRandomPool = result.rimguRandomPool
+      ? result.rimguRandomPool.split(",")
+      : commonHelper.filterInstances(rimguInstances);
   }
 );
 
@@ -155,6 +169,9 @@ browser.storage.onChanged.addListener((changes) => {
   }
   if ("bibliogramInstance" in changes) {
     bibliogramInstance = changes.bibliogramInstance.newValue;
+  }
+  if ("rimguInstance" in changes) {
+    rimguInstance = changes.rimguInstance.newValue;
   }
   if ("osmInstance" in changes) {
     osmInstance = changes.osmInstance.newValue || osmDefault;
@@ -180,6 +197,9 @@ browser.storage.onChanged.addListener((changes) => {
   }
   if ("disableBibliogram" in changes) {
     disableBibliogram = changes.disableBibliogram.newValue;
+  }
+  if ("disableRimgu" in changes) {
+    disableRimgu = changes.disableRimgu.newValue;
   }
   if ("disableOsm" in changes) {
     disableOsm = changes.disableOsm.newValue;
@@ -231,6 +251,9 @@ browser.storage.onChanged.addListener((changes) => {
   }
   if ("bibliogramRandomPool" in changes) {
     bibliogramRandomPool = changes.bibliogramRandomPool.newValue.split(",");
+  }
+  if ("rimguRandomPool" in changes) {
+    rimguRandomPool = changes.rimguRandomPool.newValue.split(",");
   }
   if ("exceptions" in changes) {
     exceptions = changes.exceptions.newValue.map((e) => {
@@ -368,6 +391,16 @@ function redirectInstagram(url, initiator, type) {
       bibliogramInstance || commonHelper.getRandomInstance(bibliogramRandomPool)
     }/u${url.pathname}${url.search}`;
   }
+}
+
+function redirectImgur(url, initiator) {
+  if (disableRimgu || isException(url, initiator)) {
+    return null;
+  }
+
+  return `${
+    rimguInstance || commonHelper.getRandomInstance(rimguRandomPool)
+  }${url.pathname}${url.search}`;
 }
 
 function redirectGoogleMaps(url, initiator) {
@@ -598,6 +631,10 @@ browser.webRequest.onBeforeRequest.addListener(
     } else if (instagramDomains.includes(url.host)) {
       redirect = {
         redirectUrl: redirectInstagram(url, initiator, details.type),
+      };
+    } else if (url.host.match(imgurRegex)) {
+      redirect = {
+        redirectUrl: redirectImgur(url, initiator),
       };
     } else if (url.href.match(googleMapsRegex)) {
       redirect = {

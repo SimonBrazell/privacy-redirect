@@ -19,6 +19,10 @@
     "message": "Bibliogram Instance",
     "description": "Label for Bibliogram instance field option (options)."
   },
+  "rimguInstance": {
+    "message": "Rimgu Instance",
+    "description": "Label for Rimgu instance field option (options)."
+  },
   "osmInstance": {
     "message": "OpenStreetMap Instance",
     "description": "Label for OSM instance field option (options)."
@@ -50,6 +54,10 @@
   "disableBibliogram": {
     "message": "Bibliogram Redirects",
     "description": "Label for enable/disable Bibliogram redirects option (options & pop-up)."
+  },
+  "disableRimgu": {
+    "message": "Rimgu Redirects",
+    "description": "Label for enable/disable Rimgu redirects option (options & pop-up)."
   },
   "disableOsm": {
     "message": "OpenStreetMap Redirects",
@@ -154,6 +162,10 @@
   "bibliogramRandomPool": {
     "message": "Bibliogram random instance pool (comma-separated)",
     "description": "Label for 'Bibliogram random instance pool (comma-separated)' option (options)."
+  },
+  "rimguRandomPool": {
+    "message": "Rimgu random instance pool (comma-separated)",
+    "description": "Label for 'Rimgu random instance pool (comma-separated)' option (options)."
   },
   "randomInstancePlaceholder": {
     "message": "Random instance (none selected)",

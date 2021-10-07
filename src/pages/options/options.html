@@ -99,6 +99,28 @@
         </table>
       </section>
       <section class="settings-block">
+        <table class="option" aria-label="Toggle Rimgu redirects">
+          <tbody>
+            <tr>
+              <td>
+                <h1 data-localise="__MSG_disableRimgu__">
+                  Rimgu Redirects
+                </h1>
+              </td>
+              <td>
+                <input
+                  aria-hidden="true"
+                  id="disable-rimgu"
+                  type="checkbox"
+                  checked
+                />&nbsp;
+                <label for="disable-rimgu" class="checkbox-label"> </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="settings-block">
         <table class="option" aria-label="Toggle OpenStreetMap redirects">
           <tbody>
             <tr>
@@ -230,6 +252,17 @@
         <div class="autocomplete">
           <input
             id="bibliogram-instance"
+            type="url"
+            data-localise-placeholder="__MSG_randomInstancePlaceholder__"
+            placeholder="Random instance (none selected)"
+          />
+        </div>
+      </section>
+      <section class="settings-block">
+        <h1 data-localise="__MSG_rimguInstance__">Rimgu Instance</h1>
+        <div class="autocomplete">
+          <input
+            id="rimgu-instance"
             type="url"
             data-localise-placeholder="__MSG_randomInstancePlaceholder__"
             placeholder="Random instance (none selected)"
@@ -554,6 +587,22 @@
           <input
             id="bibliogram-random-pool"
             name="bibliogram-random-pool"
+            type="text"
+          />
+        </section>
+        <hr>
+      </div>
+      <button type="button" class="collapsible">
+        Rimgu
+      </button>
+      <div class="collapsible-content">
+        <section class="settings-block">
+          <h1 data-localise="__MSG_rimguRandomPool__">
+            Rimgu random instance pool (comma-separated)
+          </h1>
+          <input
+            id="rimgu-random-pool"
+            name="rimgu-random-pool"
             type="text"
           />
         </section>

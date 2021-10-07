@@ -4,6 +4,7 @@ import commonHelper from "../../assets/javascripts/helpers/common.js";
 import twitterHelper from "../../assets/javascripts/helpers/twitter.js";
 import youtubeHelper from "../../assets/javascripts/helpers/youtube.js";
 import instagramHelper from "../../assets/javascripts/helpers/instagram.js";
+import imgurHelper from "../../assets/javascripts/helpers/imgur.js";
 import mapsHelper from "../../assets/javascripts/helpers/google-maps.js";
 import redditHelper from "../../assets/javascripts/helpers/reddit.js";
 import searchHelper from "../../assets/javascripts/helpers/google-search.js";
@@ -13,6 +14,7 @@ import wikipediaHelper from "../../assets/javascripts/helpers/wikipedia.js";
 const nitterInstances = twitterHelper.redirects;
 const invidiousInstances = youtubeHelper.redirects;
 const bibliogramInstances = instagramHelper.redirects;
+const rimguInstances = imgurHelper.redirects;
 const osmInstances = mapsHelper.redirects;
 const redditInstances = redditHelper.redirects;
 const searchEngineInstances = searchHelper.redirects;
@@ -22,6 +24,7 @@ const autocompletes = [
   { id: "nitter-instance", instances: nitterInstances },
   { id: "invidious-instance", instances: invidiousInstances },
   { id: "bibliogram-instance", instances: bibliogramInstances },
+  { id: "rimgu-instance", instances: rimguInstances },
   { id: "osm-instance", instances: osmInstances },
   { id: "reddit-instance", instances: redditInstances },
   {
@@ -36,6 +39,7 @@ const domparser = new DOMParser();
 let nitterInstance = document.getElementById("nitter-instance");
 let invidiousInstance = document.getElementById("invidious-instance");
 let bibliogramInstance = document.getElementById("bibliogram-instance");
+let rimguInstance = document.getElementById("rimgu-instance");
 let osmInstance = document.getElementById("osm-instance");
 let redditInstance = document.getElementById("reddit-instance");
 let searchEngineInstance = document.getElementById("search-engine-instance");
@@ -46,6 +50,7 @@ let wikipediaInstance = document.getElementById("wikipedia-instance");
 let disableNitter = document.getElementById("disable-nitter");
 let disableInvidious = document.getElementById("disable-invidious");
 let disableBibliogram = document.getElementById("disable-bibliogram");
+let disableRimgu = document.getElementById("disable-rimgu");
 let disableOsm = document.getElementById("disable-osm");
 let disableReddit = document.getElementById("disable-reddit");
 let disableSearchEngine = document.getElementById("disable-search-engine");
@@ -68,6 +73,7 @@ let useFreeTube = document.getElementById("use-freetube");
 let nitterRandomPool = document.getElementById("nitter-random-pool");
 let invidiousRandomPool = document.getElementById("invidious-random-pool");
 let bibliogramRandomPool = document.getElementById("bibliogram-random-pool");
+let rimguRandomPool = document.getElementById("rimgu-random-pool");
 let exceptions;
 
 window.browser = window.browser || window.chrome;
@@ -101,6 +107,7 @@ browser.storage.sync.get(
     "nitterInstance",
     "invidiousInstance",
     "bibliogramInstance",
+    "rimguInstance",
     "osmInstance",
     "redditInstance",
     "searchEngineInstance",
@@ -109,6 +116,7 @@ browser.storage.sync.get(
     "disableNitter",
     "disableInvidious",
     "disableBibliogram",
+    "disableRimgu",
     "disableOsm",
     "disableReddit",
     "disableSearchEngine",
@@ -130,6 +138,7 @@ browser.storage.sync.get(
     "nitterRandomPool",
     "invidiousRandomPool",
     "bibliogramRandomPool",
+    "rimguRandomPool",
   ],
   (result) => {
     theme.value = result.theme || "";
@@ -137,6 +146,7 @@ browser.storage.sync.get(
     nitterInstance.value = result.nitterInstance || "";
     invidiousInstance.value = result.invidiousInstance || "";
     bibliogramInstance.value = result.bibliogramInstance || "";
+    rimguInstance.value = result.rimguInstance || "";
     osmInstance.value = result.osmInstance || "";
     redditInstance.value = result.redditInstance || "";
     searchEngineInstance.value =
@@ -146,6 +156,7 @@ browser.storage.sync.get(
     disableNitter.checked = !result.disableNitter;
     disableInvidious.checked = !result.disableInvidious;
     disableBibliogram.checked = !result.disableBibliogram;
+    disableRimgu.checked = !result.disableRimgu;
     disableOsm.checked = !result.disableOsm;
     disableReddit.checked = !result.disableReddit;
     disableSearchEngine.checked = !result.disableSearchEngine;
@@ -175,6 +186,9 @@ browser.storage.sync.get(
     bibliogramRandomPool.value =
       result.bibliogramRandomPool ||
       commonHelper.filterInstances(bibliogramInstances);
+    rimguRandomPool.value =
+      result.rimguRandomPool ||
+      commonHelper.filterInstances(rimguInstances);
   }
 );
 
@@ -293,6 +307,15 @@ const bibliogramInstanceChange = debounce(() => {
 }, 500);
 bibliogramInstance.addEventListener("input", bibliogramInstanceChange);
 
+const rimguInstanceChange = debounce(() => {
+  if (rimguInstance.checkValidity()) {
+    browser.storage.sync.set({
+      rimguInstance: parseURL(rimguInstance.value),
+    });
+  }
+}, 500);
+rimguInstance.addEventListener("input", rimguInstanceChange);
+
 const osmInstanceChange = debounce(() => {
   if (osmInstance.checkValidity()) {
     browser.storage.sync.set({
@@ -359,6 +382,10 @@ disableInvidious.addEventListener("change", (event) => {
 
 disableBibliogram.addEventListener("change", (event) => {
   browser.storage.sync.set({ disableBibliogram: !event.target.checked });
+});
+
+disableRimgu.addEventListener("change", (event) => {
+  browser.storage.sync.set({ disableRimgu: !event.target.checked });
 });
 
 disableOsm.addEventListener("change", (event) => {
@@ -453,6 +480,13 @@ const bibliogramRandomPoolChange = debounce(() => {
   });
 }, 500);
 bibliogramRandomPool.addEventListener("input", bibliogramRandomPoolChange);
+
+const rimguRandomPoolChange = debounce(() => {
+  browser.storage.sync.set({
+    rimguRandomPool: rimguRandomPool.value,
+  });
+}, 500);
+rimguRandomPool.addEventListener("input", rimguRandomPoolChange);
 
 theme.addEventListener("change", (event) => {
   const value = event.target.options[theme.selectedIndex].value;
