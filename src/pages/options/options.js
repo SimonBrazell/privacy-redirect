@@ -3,7 +3,7 @@
 import commonHelper from "../../assets/javascripts/helpers/common.js";
 import twitterHelper from "../../assets/javascripts/helpers/twitter.js";
 import youtubeHelper from "../../assets/javascripts/helpers/youtube.js";
-import instagramHelper from "../../assets/javascripts/helpers/instagram.js";
+import bibliogramHelper from "../../assets/javascripts/helpers/bibliogram.js";
 import mapsHelper from "../../assets/javascripts/helpers/google-maps.js";
 import redditHelper from "../../assets/javascripts/helpers/reddit.js";
 import searchHelper from "../../assets/javascripts/helpers/google-search.js";
@@ -12,7 +12,7 @@ import wikipediaHelper from "../../assets/javascripts/helpers/wikipedia.js";
 
 const nitterInstances = twitterHelper.redirects;
 const invidiousInstances = youtubeHelper.redirects;
-const bibliogramInstances = instagramHelper.redirects;
+const bibliogramInstances = bibliogramHelper.redirects;
 const osmInstances = mapsHelper.redirects;
 const redditInstances = redditHelper.redirects;
 const searchEngineInstances = searchHelper.redirects;
