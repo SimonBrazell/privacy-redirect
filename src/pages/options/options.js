@@ -68,6 +68,7 @@ let useFreeTube = document.getElementById("use-freetube");
 let nitterRandomPool = document.getElementById("nitter-random-pool");
 let invidiousRandomPool = document.getElementById("invidious-random-pool");
 let bibliogramRandomPool = document.getElementById("bibliogram-random-pool");
+let wikipediaRandomPool = document.getElementById("wikipedia-random-pool");
 let exceptions;
 
 window.browser = window.browser || window.chrome;
@@ -175,6 +176,9 @@ browser.storage.sync.get(
     bibliogramRandomPool.value =
       result.bibliogramRandomPool ||
       commonHelper.filterInstances(bibliogramInstances);
+    wikipediaRandomPool.value =
+      result.wikipediaRandomPool ||
+      commonHelper.filterInstances(wikipediaInstances);
   }
 );
 

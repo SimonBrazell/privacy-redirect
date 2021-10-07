@@ -35,8 +35,7 @@ const simplyTranslateInstances = googleTranslateHelper.redirects;
 const simplyTranslateDefault = simplyTranslateInstances[0];
 const googleTranslateDomains = googleTranslateHelper.targets;
 const wikipediaInstances = wikipediaHelper.redirects;
-const wikipediaDefault = wikipediaInstances[0];
-const wikipediaRegex = wikipediaHelper.targets;
+const wikipediaDomains = wikipediaHelper.targets;
 
 let disableNitter;
 let disableInvidious;
@@ -66,6 +65,7 @@ let useFreeTube;
 let nitterRandomPool;
 let invidiousRandomPool;
 let bibliogramRandomPool;
+let wikipediaRandomPool;
 let exceptions;
 
 window.browser = window.browser || window.chrome;
@@ -100,6 +100,7 @@ browser.storage.sync.get(
     "nitterRandomPool",
     "invidiousRandomPool",
     "bibliogramRandomPool",
+    "wikipediaRandomPool",
     "exceptions",
   ],
   (result) => {
@@ -111,7 +112,7 @@ browser.storage.sync.get(
     searchEngineInstance = result.searchEngineInstance;
     simplyTranslateInstance =
       result.simplyTranslateInstance || simplyTranslateDefault;
-    wikipediaInstance = result.wikipediaInstance || wikipediaDefault;
+    wikipediaInstance = result.wikipediaInstance;
     disableNitter = result.disableNitter;
     disableInvidious = result.disableInvidious;
     disableBibliogram = result.disableBibliogram;
@@ -143,6 +144,9 @@ browser.storage.sync.get(
     bibliogramRandomPool = result.bibliogramRandomPool
       ? result.bibliogramRandomPool.split(",")
       : commonHelper.filterInstances(bibliogramInstances);
+    wikipediaRandomPool = result.wikipediaRandomPool
+      ? result.wikipediaRandomPool.split(",")
+      : commonHelper.filterInstances(wikipediaInstances);
   }
 );
 
@@ -164,7 +168,7 @@ browser.storage.onChanged.addListener((changes) => {
       changes.simplyTranslateInstance.newValue || simplyTranslateDefault;
   }
   if ("wikipediaInstance" in changes) {
-    wikipediaInstance = changes.wikipediaInstance.newValue || wikipediaDefault;
+    wikipediaInstance = changes.wikipediaInstance.newValue;
   }
   if ("redditInstance" in changes) {
     redditInstance = changes.redditInstance.newValue || redditDefault;
@@ -231,6 +235,9 @@ browser.storage.onChanged.addListener((changes) => {
   }
   if ("bibliogramRandomPool" in changes) {
     bibliogramRandomPool = changes.bibliogramRandomPool.newValue.split(",");
+  }
+  if ("wikipediaRandomPool" in changes) {
+    wikipediaRandomPool = changes.wikipediaRandomPool.newValue.split(",");
   }
   if ("exceptions" in changes) {
     exceptions = changes.exceptions.newValue.map((e) => {
@@ -554,7 +561,9 @@ function redirectWikipedia(url, initiator) {
       GETArguments.push([args[0], args[1]]);
     }
   }
-  let link = `${wikipediaInstance}${url.pathname}`;
+  let link = `${
+    wikipediaInstance || commonHelper.getRandomInstance(wikipediaRandomPool)
+  }${url.pathname}`;
   let urlSplit = url.host.split(".");
   if (urlSplit[0] != "wikipedia" && urlSplit[0] != "www") {
     if (urlSplit[0] == "m")
@@ -615,7 +624,7 @@ browser.webRequest.onBeforeRequest.addListener(
       redirect = {
         redirectUrl: redirectGoogleTranslate(url, initiator),
       };
-    } else if (url.host.match(wikipediaRegex)) {
+    } else if (url.host.match(wikipediaDomains)) {
       redirect = {
         redirectUrl: redirectWikipedia(url, initiator),
       };

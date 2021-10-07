@@ -283,7 +283,8 @@
           <input
             id="wikipedia-instance"
             type="url"
-            placeholder="https://wikiless.org"
+            data-localise-placeholder="__MSG_randomInstancePlaceholder__"
+            placeholder="Random instance (none selected)"
           />
         </div>
       </section>
@@ -554,6 +555,22 @@
           <input
             id="bibliogram-random-pool"
             name="bibliogram-random-pool"
+            type="text"
+          />
+        </section>
+        <hr>
+      </div>
+      <button type="button" class="collapsible">
+        Wikiless
+      </button>
+      <div class="collapsible-content">
+        <section class="settings-block">
+          <h1 data-localise="__MSG_wikipediaRandomPool__">
+            Wikiless random instance pool (comma-separated)
+          </h1>
+          <input
+            id="wikipedia-random-pool"
+            name="wikipedia-random-pool"
             type="text"
           />
         </section>
