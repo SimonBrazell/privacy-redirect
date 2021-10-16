@@ -11,7 +11,7 @@ const redirects = [
   "https://libredd.it",
   "https://libreddit.spike.codes",
   "https://libreddit.kavin.rocks",
-  "https://libreddit.exonip.de"
+  "https://libreddit.exonip.de",
   "https://libreddit.silkky.cloud",
   "https://lr.riverside.rocks",
   "https://reddit.artemislena.eu",
@@ -20,6 +20,8 @@ const redirects = [
   "https://teddit.namazso.eu",
   "https://teddit.ggc-project.de",
   "https://teddit.kavin.rocks",
+  "https://teddit.sethforprivacy.com",
+  "http://qtpvyiaqhmwccxwzsqubd23xhmmrt75tdyw35kp43w4hvamsgl3x27ad.onion",
 ];
 const bypassPaths = /\/(gallery\/poll\/rpan\/settings\/topics)/;
 
