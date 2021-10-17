@@ -17,8 +17,7 @@ const redirects = [
   { link: "https://search.trom.tf", q: "/" },
   { link: "https://whooglesearch.net", q: "/search" },
   { link: "https://whoogle.sdf.org", q: "/search" },
-  { link: "https://whoogle.himiko.cloud", q: "/search" },
-  { link: "https://whoogle-search.zeet.app", q: "/search" },
+  { link: "https://search.garudalinux.org", q: "/search" },
 ];
 
 export default {

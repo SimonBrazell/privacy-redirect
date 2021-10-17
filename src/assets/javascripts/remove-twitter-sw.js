@@ -6,17 +6,19 @@ const nitterInstances = [
   "https://nitter.42l.fr",
   "https://nitter.nixnet.services",
   "https://nitter.pussthecat.org",
-  "https://nitter.dark.fail",
-  "https://nitter.tedomum.net",
   "https://nitter.cattube.org",
   "https://nitter.fdn.fr",
   "https://nitter.1d4.us",
   "https://nitter.kavin.rocks",
-  "https://tweet.lambda.dance",
-  "https://nitter.cc",
   "https://nitter.vxempire.xyz",
   "https://nitter.unixfox.eu",
-  "https://bird.trom.tf"
+  "https://bird.trom.tf",
+  "https://nitter.ggc-project.de",
+  "https://nitter.actionsack.com",
+  "https://nitter.namazso.eu",
+  "https://nitter.moomoo.me",
+  "https://nitter.exonip.de",
+  "https://nitter.sethforprivacy.com",
 ];
 
 let disableNitter;

@@ -11,19 +11,17 @@ const redirects = [
   "https://libredd.it",
   "https://libreddit.spike.codes",
   "https://libreddit.kavin.rocks",
-  "https://libreddit.insanity.wtf",
-  "https://libreddit.dothq.co",
+  "https://libreddit.exonip.de",
   "https://libreddit.silkky.cloud",
-  "https://libreddit.himiko.cloud",
+  "https://lr.riverside.rocks",
   "https://reddit.artemislena.eu",
-  "https://reddit.git-bruh.duckdns.org",
   // teddit: privacy w/ old UI
   "https://teddit.net",
+  "https://teddit.namazso.eu",
   "https://teddit.ggc-project.de",
   "https://teddit.kavin.rocks",
-  "https://old.reddit.com", // desktop
-  "https://i.reddit.com", // mobile
-  "https://snew.notabug.io", // anti-censorship
+  "https://teddit.sethforprivacy.com",
+  "http://qtpvyiaqhmwccxwzsqubd23xhmmrt75tdyw35kp43w4hvamsgl3x27ad.onion",
 ];
 const bypassPaths = /\/(gallery\/poll\/rpan\/settings\/topics)/;
 
