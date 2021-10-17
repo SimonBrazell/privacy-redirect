@@ -17,7 +17,8 @@ const nitterInstances = [
   "https://nitter.actionsack.com",
   "https://nitter.namazso.eu",
   "https://nitter.moomoo.me",
-  "https://nitter.exonip.de"
+  "https://nitter.exonip.de",
+  "https://nitter.sethforprivacy.com",
 ];
 
 let disableNitter;

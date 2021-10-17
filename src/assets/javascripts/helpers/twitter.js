@@ -1,6 +1,6 @@
 /*
-    Please remember to also update the src/manifest.json file 
-    (content_scripts > matches, 'remove-twitter-sw.js') 
+    Please remember to also update the src/manifest.json file
+    (content_scripts > matches, 'remove-twitter-sw.js')
     when updating this list:
   */
 const targets = [
@@ -11,8 +11,8 @@ const targets = [
   "video.twimg.com",
 ];
 /*
-    Please remember to also update the 
-    src/assets/javascripts/remove-twitter-sw.js file 
+    Please remember to also update the
+    src/assets/javascripts/remove-twitter-sw.js file
     (const nitterInstances) when updating this list:
   */
 const redirects = [
@@ -33,11 +33,13 @@ const redirects = [
   "https://nitter.namazso.eu",
   "https://nitter.moomoo.me",
   "https://nitter.exonip.de",
+  "https://nitter.sethforprivacy.com",
   "http://3nzoldnxplag42gqjs23xvghtzf6t6yzssrtytnntc6ppc7xxuoneoad.onion",
   "http://nitter.l4qlywnpwqsluw65ts7md3khrivpirse744un3x7mlskqauz5pyuzgqd.onion",
   "http://nitterlgj3n5fgwesu3vxc5h67ruku33nqaoeoocae2mvlzhsu6k7fqd.onion",
   "http://npf37k3mtzwxreiw52ccs5ay4e6qt2fkcs2ndieurdyn2cuzzsfyfvid.onion",
   "http://nitterrrs6bbcba2bxjviwxzzapkhuuelljtig2ku2rxasweckxxxhid.onion",
+  "http://jebqj47jgxleaiosfcxfibx2xdahjettuydlxbg64azd4khsxv6kawid.onion",
 ];
 
 export default {

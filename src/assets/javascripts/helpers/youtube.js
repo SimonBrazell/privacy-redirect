@@ -37,10 +37,12 @@ const redirects = [
   "https://dev.viewtube.io",
   "https://piped.kavin.rocks",
   "https://invidious.048596.xyz",
+  "https://invidious.sethforprivacy.com",
   "http://fz253lmuao3strwbfbmx46yu7acac2jz27iwtorgmbqlkurlclmancad.onion",
   "http://qklhadlycap4cnod.onion",
   "http://c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion",
   "http://w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion",
+  "http://euxxcnhsynwmfidvhjf6uzptsmh4dipkmgdmcmxxuo7tunp3ad2jrwyd.onion",
 ];
 
 export default {
