@@ -20,7 +20,7 @@
 
 ## About
 
-A web extension that redirects _Twitter, YouTube, Instagram, Google Maps, Reddit, Google Search, & Google Translate_ requests to privacy friendly alternatives - [Nitter](https://github.com/zedeus/nitter), [Invidious](https://github.com/iv-org/invidious), [FreeTube](https://github.com/FreeTubeApp/FreeTube), [Bibliogram](https://sr.ht/~cadence/bibliogram/), [OpenStreetMap](https://www.openstreetmap.org/), [SimplyTranslate](https://git.sr.ht/~metalune/simplytranslate_web) & Private Search Engines like [DuckDuckGo](https://duckduckgo.com) and [Startpage](https://startpage.com).
+A web extension that redirects _Twitter, YouTube, Instagram, Google Maps, Reddit, Google Search, & Google Translate_ requests to privacy friendly alternative frontends for those sites - [Nitter](https://github.com/zedeus/nitter), [Invidious](https://github.com/iv-org/invidious), [FreeTube](https://github.com/FreeTubeApp/FreeTube), [Bibliogram](https://sr.ht/~cadence/bibliogram/), [OpenStreetMap](https://www.openstreetmap.org/), [SimplyTranslate](https://git.sr.ht/~metalune/simplytranslate_web) & Private Search Engines like [DuckDuckGo](https://duckduckgo.com) and [Startpage](https://startpage.com).
 
 It's possible to toggle all redirects on and off. The extension will default to using random instances if none are selected. If these instances are not working, you can try and set a custom instance from the list below.
 
