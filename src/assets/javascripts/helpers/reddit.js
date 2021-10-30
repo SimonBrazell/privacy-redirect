@@ -5,6 +5,7 @@ const targets = [
   "amp.reddit.com",
   "i.redd.it",
   "redd.it",
+  "old.reddit.com",
 ];
 const redirects = [
   // libreddit: privacy w/ modern UI
@@ -16,14 +17,11 @@ const redirects = [
   "https://libreddit.silkky.cloud",
   "https://libreddit.himiko.cloud",
   "https://reddit.artemislena.eu",
-  "https://reddit.git-bruh.duckdns.org",
   // teddit: privacy w/ old UI
   "https://teddit.net",
   "https://teddit.ggc-project.de",
   "https://teddit.kavin.rocks",
-  "https://old.reddit.com", // desktop
-  "https://i.reddit.com", // mobile
-  "https://snew.notabug.io", // anti-censorship
+  "https://snew.notabug.io",
 ];
 const bypassPaths = /\/(gallery\/poll\/rpan\/settings\/topics)/;
 
