@@ -24,7 +24,6 @@ const redirects = [
   "https://vid.mint.lgbt",
   "https://invidious.site",
   "https://yewtu.be",
-  "https://invidious.tube",
   "https://invidious.silkky.cloud",
   "https://invidious.himiko.cloud",
   "https://inv.skyn3t.in",
