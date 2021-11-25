@@ -9,7 +9,9 @@ import redditHelper from "../../assets/javascripts/helpers/reddit.js";
 import searchHelper from "../../assets/javascripts/helpers/google-search.js";
 import googleTranslateHelper from "../../assets/javascripts/helpers/google-translate.js";
 import wikipediaHelper from "../../assets/javascripts/helpers/wikipedia.js";
+import twitter from "../../assets/javascripts/helpers/twitter.js";
 
+window.browser = window.browser || window.chrome;
 const nitterInstances = twitterHelper.redirects;
 const twitterDomains = twitterHelper.targets;
 const youtubeDomains = youtubeHelper.targets;
@@ -57,6 +59,7 @@ let wikipediaInstance;
 let alwaysProxy;
 let onlyEmbeddedVideo;
 let videoQuality;
+let invidiousRandomPool = [ "" ];
 let invidiousDarkMode;
 let invidiousVolume;
 let invidiousPlayerStyle;
@@ -64,11 +67,8 @@ let invidiousSubtitles;
 let invidiousAutoplay;
 let useFreeTube;
 let nitterRandomPool;
-let invidiousRandomPool;
-let bibliogramRandomPool;
+let bibliogramRandomPool = [ "" ];
 let exceptions;
-
-window.browser = window.browser || window.chrome;
 
 browser.storage.sync.get(
   [
@@ -91,6 +91,7 @@ browser.storage.sync.get(
     "alwaysProxy",
     "onlyEmbeddedVideo",
     "videoQuality",
+    "invidiousRandomPool",
     "invidiousDarkMode",
     "invidiousVolume",
     "invidiousPlayerStyle",
@@ -98,7 +99,6 @@ browser.storage.sync.get(
     "invidiousAutoplay",
     "useFreeTube",
     "nitterRandomPool",
-    "invidiousRandomPool",
     "bibliogramRandomPool",
     "exceptions",
   ],
@@ -129,6 +129,9 @@ browser.storage.sync.get(
           return new RegExp(e);
         })
       : [];
+    invidiousRandomPool = result.invidiousRandomPool
+        ? result.invidiousRandomPool.split(",")
+        : [ "" ];
     invidiousVolume = result.invidiousVolume;
     invidiousPlayerStyle = result.invidiousPlayerStyle;
     invidiousSubtitles = result.invidiousSubtitles || "";
@@ -136,13 +139,10 @@ browser.storage.sync.get(
     useFreeTube = result.useFreeTube;
     nitterRandomPool = result.nitterRandomPool
       ? result.nitterRandomPool.split(",")
-      : commonHelper.filterInstances(nitterInstances);
-    invidiousRandomPool = result.invidiousRandomPool
-      ? result.invidiousRandomPool.split(",")
-      : commonHelper.filterInstances(invidiousInstances);
+      : [ "" ];
     bibliogramRandomPool = result.bibliogramRandomPool
       ? result.bibliogramRandomPool.split(",")
-      : commonHelper.filterInstances(bibliogramInstances);
+      : [ "" ];
   }
 );
 
@@ -250,14 +250,22 @@ function isFirefox() {
   return typeof InstallTrigger !== "undefined";
 }
 
-function redirectYouTube(url, initiator, type) {
+function redirectYouTube(url, initiator, type, force=false) {
+  let instances = invidiousInstances();
+  instances = commonHelper.filterInstances(instances);
+  let pool = (invidiousRandomPool[0] === "" && invidiousRandomPool.length === 1) ? instances : invidiousRandomPool;
+  if (force === true) {
+    return `${
+      invidiousInstance || commonHelper.getRandomInstance(pool)
+    }${url.pathname.replace("/shorts", "")}${url.search}`;
+  }
   if (disableInvidious || isException(url, initiator)) {
     return null;
   }
   if (
     initiator &&
     (initiator.origin === invidiousInstance ||
-      invidiousInstances.includes(initiator.origin) ||
+      (instances).includes(initiator.origin) ||
       youtubeDomains.includes(initiator.host))
   ) {
     return null;
@@ -300,11 +308,12 @@ function redirectYouTube(url, initiator, type) {
   }
 
   return `${
-    invidiousInstance || commonHelper.getRandomInstance(invidiousRandomPool)
+    invidiousInstance || commonHelper.getRandomInstance(pool)
   }${url.pathname.replace("/shorts", "")}${url.search}`;
 }
 
 function redirectTwitter(url, initiator) {
+  let pool = (nitterRandomPool[0] === "" && nitterRandomPool.length === 1) ? nitterInstances() : nitterRandomPool;
   if (disableNitter || isException(url, initiator)) {
     return null;
   }
@@ -315,7 +324,7 @@ function redirectTwitter(url, initiator) {
     isFirefox() &&
     initiator &&
     (initiator.origin === nitterInstance ||
-      nitterInstances.includes(initiator.origin) ||
+      pool.includes(initiator.origin) ||
       twitterDomains.includes(initiator.host))
   ) {
     browser.storage.sync.set({
@@ -325,20 +334,24 @@ function redirectTwitter(url, initiator) {
   }
   if (url.host.split(".")[0] === "pbs" || url.host.split(".")[0] === "video") {
     return `${
-      nitterInstance || commonHelper.getRandomInstance(nitterRandomPool)
+      nitterInstance || commonHelper.getRandomInstance(pool)
     }/pic/${encodeURIComponent(url.href)}`;
   } else if (url.pathname.split("/").includes("tweets")) {
     return `${
-      nitterInstance || commonHelper.getRandomInstance(nitterRandomPool)
+      nitterInstance || commonHelper.getRandomInstance(pool)
     }${url.pathname.replace("/tweets", "")}${url.search}`;
   } else {
     return `${
-      nitterInstance || commonHelper.getRandomInstance(nitterRandomPool)
+      nitterInstance || commonHelper.getRandomInstance(pool)
     }${url.pathname}${url.search}`;
   }
 }
 
 function redirectInstagram(url, initiator, type) {
+  let instances = bibliogramInstances();
+  instances = commonHelper.filterInstances(instances);
+  let pool = (bibliogramRandomPool[0] === "" && bibliogramRandomPool.length === 1) ? instances : bibliogramRandomPool;
+
   if (disableBibliogram || isException(url, initiator)) {
     return null;
   }
@@ -346,7 +359,7 @@ function redirectInstagram(url, initiator, type) {
   if (
     initiator &&
     (initiator.origin === bibliogramInstance ||
-      bibliogramInstances.includes(initiator.origin) ||
+      instances.includes(initiator.origin) ||
       instagramDomains.includes(initiator.host))
   ) {
     return null;
@@ -360,12 +373,12 @@ function redirectInstagram(url, initiator, type) {
     instagramReservedPaths.includes(url.pathname.split("/")[1])
   ) {
     return `${
-      bibliogramInstance || commonHelper.getRandomInstance(bibliogramRandomPool)
+      bibliogramInstance || commonHelper.getRandomInstance(pool)
     }${url.pathname}${url.search}`;
   } else {
     // Likely a user profile, redirect to '/u/...'
     return `${
-      bibliogramInstance || commonHelper.getRandomInstance(bibliogramRandomPool)
+      bibliogramInstance || commonHelper.getRandomInstance(pool)
     }/u${url.pathname}${url.search}`;
   }
 }
@@ -678,5 +691,21 @@ browser.runtime.onInstalled.addListener((details) => {
         }
       }
     );
+  }
+});
+
+browser.tabs.onUpdated.addListener((tabId, changeInfo, tabInfo) => 
+{
+  if (changeInfo.url) {
+    let domain = changeInfo.url;
+    let site_name = domain.substring(domain.indexOf("//")+2);
+    domain = domain.substring(0, site_name.indexOf("/")+domain.length-site_name.length);
+    let inv_pool = (invidiousRandomPool[0] === "" && invidiousRandomPool.length === 1) ? invidiousInstances(true) : invidiousRandomPool;
+    if (twitterDomains.includes(site_name.slice(0,-1))) {
+      browser.tabs.executeScript({file:"/assets/javascripts/remove-twitter-sw.js"});
+    }
+    else if (inv_pool.includes(domain)) {
+        browser.tabs.executeScript({file:"/assets/javascripts/persist-invidious-prefs.js"});
+      }
   }
 });
