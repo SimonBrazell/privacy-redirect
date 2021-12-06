@@ -3,7 +3,7 @@
 import commonHelper from "../../assets/javascripts/helpers/common.js";
 import twitterHelper from "../../assets/javascripts/helpers/twitter.js";
 import youtubeHelper from "../../assets/javascripts/helpers/youtube.js";
-import instagramHelper from "../../assets/javascripts/helpers/instagram.js";
+import bibliogramHelper from "../../assets/javascripts/helpers/bibliogram.js";
 import mapsHelper from "../../assets/javascripts/helpers/google-maps.js";
 import redditHelper from "../../assets/javascripts/helpers/reddit.js";
 import searchHelper from "../../assets/javascripts/helpers/google-search.js";
@@ -14,10 +14,10 @@ const nitterInstances = twitterHelper.redirects;
 const twitterDomains = twitterHelper.targets;
 const youtubeDomains = youtubeHelper.targets;
 const invidiousInstances = youtubeHelper.redirects;
-const instagramDomains = instagramHelper.targets;
-const bibliogramInstances = instagramHelper.redirects;
-const instagramReservedPaths = instagramHelper.reservedPaths;
-const bibliogramBypassPaths = instagramHelper.bypassPaths;
+const bibliogramDomains = bibliogramHelper.targets;
+const bibliogramInstances = bibliogramHelper.redirects;
+const bibliogramReservedPaths = bibliogramHelper.reservedPaths;
+const bibliogramBypassPaths = bibliogramHelper.bypassPaths;
 const osmDefault = mapsHelper.redirects[0];
 const googleMapsRegex = mapsHelper.targets;
 const mapCentreRegex = mapsHelper.mapCentreRegex;
@@ -338,7 +338,7 @@ function redirectTwitter(url, initiator) {
   }
 }
 
-function redirectInstagram(url, initiator, type) {
+function redirectBibliogram(url, initiator, type) {
   if (disableBibliogram || isException(url, initiator)) {
     return null;
   }
@@ -347,7 +347,7 @@ function redirectInstagram(url, initiator, type) {
     initiator &&
     (initiator.origin === bibliogramInstance ||
       bibliogramInstances.includes(initiator.origin) ||
-      instagramDomains.includes(initiator.host))
+      bibliogramDomains.includes(initiator.host))
   ) {
     return null;
   }
@@ -357,7 +357,7 @@ function redirectInstagram(url, initiator, type) {
   }
   if (
     url.pathname === "/" ||
-    instagramReservedPaths.includes(url.pathname.split("/")[1])
+    bibliogramReservedPaths.includes(url.pathname.split("/")[1])
   ) {
     return `${
       bibliogramInstance || commonHelper.getRandomInstance(bibliogramRandomPool)
@@ -595,9 +595,9 @@ browser.webRequest.onBeforeRequest.addListener(
       redirect = {
         redirectUrl: redirectTwitter(url, initiator),
       };
-    } else if (instagramDomains.includes(url.host)) {
+    } else if (bibliogramDomains.includes(url.host)) {
       redirect = {
-        redirectUrl: redirectInstagram(url, initiator, details.type),
+        redirectUrl: redirectBibliogram(url, initiator, details.type),
       };
     } else if (url.href.match(googleMapsRegex)) {
       redirect = {
