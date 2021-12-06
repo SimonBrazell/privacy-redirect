@@ -7,7 +7,8 @@
   },
   "scripts": {
     "build": "web-ext build --overwrite-dest --source-dir ./src/",
-    "test": "web-ext lint --source-dir ./src/ || true"
+    "lint": "web-ext lint --source-dir ./src/ || true",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,10 @@
   },
   "homepage": "https://github.com/SimonBrazell/privacy-redirect#readme",
   "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "babel-jest": "^27.2.5",
+    "jest": "^27.2.5",
     "web-ext": "^6.2.0"
   }
 }
