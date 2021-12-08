@@ -20,7 +20,6 @@ const redirects = [
   "https://invidious.kavin.rocks",
   "https://tube.connect.cafe",
   "https://invidious.zapashcanon.fr",
-  "https://invidiou.site",
   "https://vid.mint.lgbt",
   "https://invidious.site",
   "https://yewtu.be",
