@@ -35,6 +35,10 @@
     "message": "Istanza di SimplyTranslate",
     "description": "Label for SimplyTranslate instance field option (options)."
   },
+  "wikilessInstance": {
+    "message": "Istanza di Wikiless",
+    "description": "Label for Wikiless instance field option (options)."
+  },
   "disableNitter": {
     "message": "Reindirizzamenti Nitter",
     "description": "Label for enable/disable Nitter redirects option (options & pop-up)."
@@ -62,6 +66,10 @@
   "disableSimplyTranslate": {
     "message": "Reindirizzamenti SimplyTranslate",
     "description": "Label for enable/disable SimplyTranslate redirects option (options & pop-up)."
+  },
+  "disableWikiless": {
+    "message": "Reindirizzamenti Wikiless",
+    "description": "Label for enable/disable Wikiless redirects option (options & pop-up)."
   },
   "alwaysProxy": {
     "message": "Usa sempre il proxy per i video su Invidious",
@@ -146,6 +154,10 @@
   "bibliogramRandomPool": {
     "message": "Gruppo di istanze Bibliogram casuali (separate da virgola)",
     "description": "Label for 'Bibliogram random instance pool (comma-separated)' option (options)."
+  },
+  "wikilessRandomPool": {
+    "message": "Gruppo di istanze Wikiless casuali (separate da virgola)",
+    "description": "Label for 'Wikiless random instance pool (comma-separated)' option (options)."
   },
   "randomInstancePlaceholder": {
     "message": "Istanza casuale (nessuna selezione)",

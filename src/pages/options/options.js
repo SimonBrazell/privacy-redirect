@@ -8,7 +8,7 @@ import mapsHelper from "../../assets/javascripts/helpers/google-maps.js";
 import redditHelper from "../../assets/javascripts/helpers/reddit.js";
 import searchHelper from "../../assets/javascripts/helpers/google-search.js";
 import googleTranslateHelper from "../../assets/javascripts/helpers/google-translate.js";
-import wikipediaHelper from "../../assets/javascripts/helpers/wikipedia.js";
+import wikilessHelper from "../../assets/javascripts/helpers/wikiless.js";
 
 const nitterInstances = twitterHelper.redirects;
 const invidiousInstances = youtubeHelper.redirects;
@@ -17,7 +17,7 @@ const osmInstances = mapsHelper.redirects;
 const redditInstances = redditHelper.redirects;
 const searchEngineInstances = searchHelper.redirects;
 const simplyTranslateInstances = googleTranslateHelper.redirects;
-const wikipediaInstances = wikipediaHelper.redirects;
+const wikilessInstances = wikilessHelper.redirects;
 const autocompletes = [
   { id: "nitter-instance", instances: nitterInstances },
   { id: "invidious-instance", instances: invidiousInstances },
@@ -29,7 +29,7 @@ const autocompletes = [
     instances: searchEngineInstances.map((instance) => instance.link),
   },
   { id: "simply-translate-instance", instances: simplyTranslateInstances },
-  { id: "wikipedia-instance", instances: wikipediaInstances },
+  { id: "wikiless-instance", instances: wikilessInstances },
 ];
 const domparser = new DOMParser();
 
@@ -42,7 +42,7 @@ let searchEngineInstance = document.getElementById("search-engine-instance");
 let simplyTranslateInstance = document.getElementById(
   "simply-translate-instance"
 );
-let wikipediaInstance = document.getElementById("wikipedia-instance");
+let wikilessInstance = document.getElementById("wikiless-instance");
 let disableNitter = document.getElementById("disable-nitter");
 let disableInvidious = document.getElementById("disable-invidious");
 let disableBibliogram = document.getElementById("disable-bibliogram");
@@ -52,7 +52,7 @@ let disableSearchEngine = document.getElementById("disable-search-engine");
 let disableSimplyTranslate = document.getElementById(
   "disable-simply-translate"
 );
-let disableWikipedia = document.getElementById("disable-wikipedia");
+let disableWikiless = document.getElementById("disable-wikiless");
 let alwaysProxy = document.getElementById("always-proxy");
 let onlyEmbeddedVideo = document.getElementById("only-embed");
 let videoQuality = document.getElementById("video-quality");
@@ -68,6 +68,7 @@ let useFreeTube = document.getElementById("use-freetube");
 let nitterRandomPool = document.getElementById("nitter-random-pool");
 let invidiousRandomPool = document.getElementById("invidious-random-pool");
 let bibliogramRandomPool = document.getElementById("bibliogram-random-pool");
+let wikilessRandomPool = document.getElementById("wikiless-random-pool");
 let exceptions;
 
 window.browser = window.browser || window.chrome;
@@ -105,7 +106,7 @@ browser.storage.sync.get(
     "redditInstance",
     "searchEngineInstance",
     "simplyTranslateInstance",
-    "wikipediaInstance",
+    "wikilessInstance",
     "disableNitter",
     "disableInvidious",
     "disableBibliogram",
@@ -113,7 +114,7 @@ browser.storage.sync.get(
     "disableReddit",
     "disableSearchEngine",
     "disableSimplyTranslate",
-    "disableWikipedia",
+    "disableWikiless",
     "alwaysProxy",
     "onlyEmbeddedVideo",
     "videoQuality",
@@ -142,7 +143,7 @@ browser.storage.sync.get(
     searchEngineInstance.value =
       (result.searchEngineInstance && result.searchEngineInstance.link) || "";
     simplyTranslateInstance.value = result.simplyTranslateInstance || "";
-    wikipediaInstance.value = result.wikipediaInstance || "";
+    wikilessInstance.value = result.wikilessInstance || "";
     disableNitter.checked = !result.disableNitter;
     disableInvidious.checked = !result.disableInvidious;
     disableBibliogram.checked = !result.disableBibliogram;
@@ -150,7 +151,7 @@ browser.storage.sync.get(
     disableReddit.checked = !result.disableReddit;
     disableSearchEngine.checked = !result.disableSearchEngine;
     disableSimplyTranslate.checked = !result.disableSimplyTranslate;
-    disableWikipedia.checked = !result.disableWikipedia;
+    disableWikiless.checked = !result.disableWikiless;
     alwaysProxy.checked = result.alwaysProxy;
     onlyEmbeddedVideo.checked = result.onlyEmbeddedVideo;
     videoQuality.value = result.videoQuality || "";
@@ -175,6 +176,9 @@ browser.storage.sync.get(
     bibliogramRandomPool.value =
       result.bibliogramRandomPool ||
       commonHelper.filterInstances(bibliogramInstances);
+    wikilessRandomPool.value =
+      result.wikilessRandomPool ||
+      commonHelper.filterInstances(wikilessInstances);
   }
 );
 
@@ -337,16 +341,16 @@ simplyTranslateInstance.addEventListener(
   simplyTranslateInstanceChange
 );
 
-const wikipediaInstanceChange = debounce(() => {
-  if (wikipediaInstance.checkValidity()) {
+const wikilessInstanceChange = debounce(() => {
+  if (wikilessInstance.checkValidity()) {
     browser.storage.sync.set({
-      wikipediaInstance: parseURL(wikipediaInstance.value),
+      wikilessInstance: parseURL(wikilessInstance.value),
     });
   }
 }, 500);
-wikipediaInstance.addEventListener(
+wikilessInstance.addEventListener(
   "input",
-  wikipediaInstanceChange
+  wikilessInstanceChange
 );
 
 disableNitter.addEventListener("change", (event) => {
@@ -377,8 +381,8 @@ disableSimplyTranslate.addEventListener("change", (event) => {
   browser.storage.sync.set({ disableSimplyTranslate: !event.target.checked });
 });
 
-disableWikipedia.addEventListener("change", (event) => {
-  browser.storage.sync.set({ disableWikipedia: !event.target.checked });
+disableWikiless.addEventListener("change", (event) => {
+  browser.storage.sync.set({ disableWikiless: !event.target.checked });
 });
 
 alwaysProxy.addEventListener("change", (event) => {

@@ -35,9 +35,9 @@
     "message": "Instancia deSimplyTranslate",
     "description": "Etiqueta del campo para la instancia de SimplyTranslate (opciones)."
   },
-  "wikipediaInstance": {
-    "message": "Instancia de Wikipedia",
-    "description": "Etiqueta del campo para la instancia de Wikipedia (opciones)."
+  "wikilessInstance": {
+    "message": "Instancia de Wikiless",
+    "description": "Etiqueta del campo para la instancia de Wikiless (opciones)."
   },
   "disableNitter": {
     "message": "Redirecciones de Nitter",
@@ -67,9 +67,9 @@
     "message": "Redirecciones de SimplyTranslate",
     "description": "Etiqueta para activar/desactivar la opción de redirecciones de SimplyTranslate (opciones y pop-up)."
   },
-  "disableWikipedia": {
-    "message": "Redirecciones de Wikipedia",
-    "description": "Etiqueta para activar/desactivar la opción de redirecciones de Wikipedia (opciones y pop-up)."
+  "disableWikiless": {
+    "message": "Redirecciones de Wikiless",
+    "description": "Etiqueta para activar/desactivar la opción de redirecciones de Wikiless (opciones y pop-up)."
   },
   "alwaysProxy": {
     "message": "Siempre usar el proxy de Invidious para videos",
