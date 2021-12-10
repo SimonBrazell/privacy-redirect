@@ -9,6 +9,7 @@ const targets = [
 ];
 const redirects = [
   // libreddit: privacy w/ modern UI
+  "https://libreddit.albony.xyz/",
   "https://libredd.it",
   "https://libreddit.spike.codes",
   "https://libreddit.kavin.rocks",
