@@ -18,6 +18,7 @@ const targets = [
 const redirects = [
   "https://scribe.rip",
   "https://scribe.nixnet.services"
+  "https://scribe.citizen4.eu"
 ];
 
 export default {
