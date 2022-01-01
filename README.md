@@ -59,7 +59,8 @@ Privacy Redirect allows setting custom instances, instances can be found here:
   - [Whoogle](https://benbusby.com/projects/whoogle-search/)
 - [Scribe](https://sr.ht/~edwardloveall/scribe/) instances:, an alternative frontend for Medium:
   - [scribe.rip](https://scribe.rip/)
-  - [NixNet scribe](scribe.nixnet.services/)
+  - [NixNet scribe](https://scribe.nixnet.services/)
+  - [Citizen4 scribe](https://scribe.citizen4.eu/)
 
 ## Development
 
