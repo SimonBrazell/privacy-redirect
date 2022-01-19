@@ -8,9 +8,7 @@ const redirects = [
   "https://bibliogram.art",
   "https://bibliogram.snopyta.org",
   "https://bibliogram.pussthecat.org",
-  "https://bibliogram.nixnet.services",
   "https://bibliogram.ethibox.fr",
-  "https://bibliogram.hamster.dance",
   "https://insta.trom.tf",
   "https://bib.actionsack.com"
 ];
