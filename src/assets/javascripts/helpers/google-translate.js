@@ -1,6 +1,6 @@
 const targets = ["translate.google.com", "translate.google.no"];
 
-const redirects = ["https://translate.metalune.xyz"];
+const redirects = ["https://simplytranslate.org"];
 
 export default {
   targets,
