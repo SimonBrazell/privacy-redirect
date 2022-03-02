@@ -9,6 +9,7 @@ const targets = [
   "mobile.twitter.com",
   "pbs.twimg.com",
   "video.twimg.com",
+  "platform.twitter.com",
 ];
 /*
     Please remember to also update the 
