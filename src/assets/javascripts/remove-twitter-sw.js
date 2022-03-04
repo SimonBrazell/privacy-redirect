@@ -4,7 +4,7 @@ const nitterInstances = [
   "https://nitter.net",
   "https://nitter.snopyta.org",
   "https://nitter.42l.fr",
-  "https://nitter.nixnet.services",
+  "https://nitter:nitter@nitter.nixnet.services",
   "https://nitter.pussthecat.org",
   "https://nitter.dark.fail",
   "https://nitter.cattube.org",
