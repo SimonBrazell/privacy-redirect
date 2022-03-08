@@ -58,6 +58,7 @@ let alwaysProxy;
 let onlyEmbeddedVideo;
 let videoQuality;
 let invidiousDarkMode;
+let invidiousListenMode;
 let invidiousVolume;
 let invidiousPlayerStyle;
 let invidiousSubtitles;
@@ -92,6 +93,7 @@ browser.storage.sync.get(
     "onlyEmbeddedVideo",
     "videoQuality",
     "invidiousDarkMode",
+    "invidiousListenMode",
     "invidiousVolume",
     "invidiousPlayerStyle",
     "invidiousSubtitles",
@@ -124,6 +126,7 @@ browser.storage.sync.get(
     onlyEmbeddedVideo = result.onlyEmbeddedVideo;
     videoQuality = result.videoQuality;
     invidiousDarkMode = result.invidiousDarkMode;
+    invidiousListenMode = result.invidiousListenMode;
     exceptions = result.exceptions
       ? result.exceptions.map((e) => {
           return new RegExp(e);
@@ -208,6 +211,9 @@ browser.storage.onChanged.addListener((changes) => {
   if ("invidiousDarkMode" in changes) {
     invidiousDarkMode = changes.invidiousDarkMode.newValue;
   }
+  if ("invidiousListenMode" in changes) {
+    invidiousListenMode = changes.invidiousListenMode.newValue;
+  }
   if ("invidiousVolume" in changes) {
     invidiousVolume = changes.invidiousVolume.newValue;
   }
@@ -285,6 +291,9 @@ function redirectYouTube(url, initiator, type) {
   }
   if (invidiousDarkMode) {
     url.searchParams.append("dark_mode", invidiousDarkMode);
+  }
+  if (invidiousListenMode) {
+    url.searchParams.append("listen", invidiousListenMode);
   }
   if (invidiousVolume) {
     url.searchParams.append("volume", invidiousVolume);
