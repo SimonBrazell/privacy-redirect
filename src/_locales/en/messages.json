@@ -91,6 +91,10 @@
     "message": "Invidious dark mode always on",
     "description": "Label for 'Invidious dark mode always on' option (options)."
   },
+  "invidiousListenMode": {
+    "message": "Invidious listen (audio only) by default",
+    "description": "Label for 'Invidious listen (audio only) by default' option (options)."
+  },
   "persistInvidiousPrefs": {
     "message": "Persist Invidious preferences (as cookie)",
     "description": "Label for 'Persist Invidious preferences (as cookie)' option (options)."

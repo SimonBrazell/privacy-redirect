@@ -58,6 +58,7 @@ let onlyEmbeddedVideo = document.getElementById("only-embed");
 let videoQuality = document.getElementById("video-quality");
 let removeTwitterSW = document.getElementById("remove-twitter-sw");
 let invidiousDarkMode = document.getElementById("invidious-dark-mode");
+let invidiousListenMode = document.getElementById("invidious-listen-mode");
 let persistInvidiousPrefs = document.getElementById("persist-invidious-prefs");
 let invidiousVolume = document.getElementById("invidious-volume");
 let invidiousPlayerStyle = document.getElementById("invidious-player-style");
@@ -119,6 +120,7 @@ browser.storage.sync.get(
     "videoQuality",
     "removeTwitterSW",
     "invidiousDarkMode",
+    "invidiousListenMode",
     "persistInvidiousPrefs",
     "invidiousVolume",
     "invidiousPlayerStyle",
@@ -156,6 +158,7 @@ browser.storage.sync.get(
     videoQuality.value = result.videoQuality || "";
     removeTwitterSW.checked = !result.removeTwitterSW;
     invidiousDarkMode.checked = result.invidiousDarkMode;
+    invidiousListenMode.checked = result.invidiousListenMode;
     persistInvidiousPrefs.checked = result.persistInvidiousPrefs;
     exceptions = result.exceptions || [];
     exceptions.forEach(prependExceptionsItem);
@@ -401,6 +404,10 @@ removeTwitterSW.addEventListener("change", (event) => {
 
 invidiousDarkMode.addEventListener("change", (event) => {
   browser.storage.sync.set({ invidiousDarkMode: event.target.checked });
+});
+
+invidiousListenMode.addEventListener("change", (event) => {
+  browser.storage.sync.set({ invidiousListenMode: event.target.checked });
 });
 
 persistInvidiousPrefs.addEventListener("change", (event) => {
