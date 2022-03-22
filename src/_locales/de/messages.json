@@ -23,6 +23,22 @@
     "message": "OpenStreetMap-Instanz",
     "description": "Label for OSM instance field option (options)."
   },
+  "redditInstance": {
+    "message": "Reddit-Instanz",
+    "description": "Label for Reddit instance field option (options)."
+  },
+  "searchEngineInstance": {
+    "message": "Suchmaschinen-Instanz",
+    "description": "Label for Search Engine instance field option (options)."
+  },
+  "simplyTranslateInstance": {
+    "message": "SimplyTranslate-Instanz",
+    "description": "Label for SimplyTranslate instance field option (options)."
+  },
+  "wikipediaInstance": {
+    "message": "Wikipedia-Instanz",
+    "description": "Label for Wikipedia instance field option (options)."
+  },
   "disableNitter": {
     "message": "Nitter-Weiterleitungen",
     "description": "Label for enable/disable Nitter redirects option (options & pop-up)."
@@ -38,6 +54,22 @@
   "disableOsm": {
     "message": "OpenStreetMap-Weiterleitungen",
     "description": "Label for enable/disable OSM redirects option (options & pop-up)."
+  },
+  "disableReddit": {
+    "message": "Reddit-Weiterleitungen",
+    "description": "Label for enable/disable Reddit redirects option (options & pop-up)."
+  },
+  "disableSearchEngine": {
+    "message": "Suchmaschinen-Weiterleitungen",
+    "description": "Label for enable/disable Search Engine redirects option (options & pop-up)."
+  },
+  "disableSimplyTranslate": {
+    "message": "SimplyTranslate-Weiterleitungen",
+    "description": "Label for enable/disable SimplyTranslate redirects option (options & pop-up)."
+  },
+  "disableWikipedia": {
+    "message": "Wikipedia-Weiterleitungen",
+    "description": "Label for enable/disable Wikipedia redirects option (options & pop-up)."
   },
   "alwaysProxy": {
     "message": "Videos immer durch Invidious-Proxy leiten",
@@ -106,5 +138,25 @@
   "version": {
     "message": "Version",
     "description": "Version"
+  },
+  "useFreeTube": {
+    "message": "Nutze FreeTube über Invidious, falls möglich",
+    "description": "Label for 'Use FreeTube over Invidious when possible' option (options)."
+  },
+  "nitterRandomPool": {
+    "message": "Mögliche Nitter-Instanzen (durch Komma getrennt)",
+    "description": "Label for 'Nitter random instance pool (comma-separated)' option (options)."
+  },
+  "invidiousRandomPool": {
+    "message": "Mögliche Invidious-Instanzen (durch Komma getrennt)",
+    "description": "Label for 'Invidious random instance pool (comma-separated)' option (options)."
+  },
+  "bibliogramRandomPool": {
+    "message": "Mögliche Bibliogram-Instanzen (durch Komma getrennt)",
+    "description": "Label for 'Bibliogram random instance pool (comma-separated)' option (options)."
+  },
+  "randomInstancePlaceholder": {
+    "message": "Zufällige Instanz (keine ausgewählt)",
+    "description": "Input placeholder for provider instance settings that select a random instance from a pool when none is selected"
   }
 }
