@@ -4,7 +4,7 @@
     "description": "Name of the extension."
   },
   "extensionDescription": {
-    "message": "Leitet Anfragen von Twitter, YouTube, Instagram & Google Maps auf datenschutzfreundliche Alternativen weiter.",
+    "message": "Leitet Twitter, YouTube, Instagram und weitere zu datenschutzfreundlichen Alternativen weiter.",
     "description": "Description of the extension."
   },
   "nitterInstance": {
