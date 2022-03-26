@@ -530,6 +530,9 @@ function redirectSearchEngine(url, initiator) {
     .forEach(function (input) {
       if (input.startsWith("q=")) search = input;
     });
+    if (searchEngine.prefix) {
+      search = search.replace("q=", searchEngine.prefix);
+    }
   return `${searchEngine.link}${searchEngine.q}?${search}`;
 }
 
