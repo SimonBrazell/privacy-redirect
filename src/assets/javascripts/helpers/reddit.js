@@ -22,6 +22,7 @@ const redirects = [
   "https://teddit.ggc-project.de",
   "https://teddit.kavin.rocks",
   "https://snew.notabug.io",
+  "https://rdt.trom.tf",
 ];
 const bypassPaths = /\/(gallery\/poll\/rpan\/settings\/topics)/;
 
