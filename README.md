@@ -58,7 +58,8 @@ Privacy Redirect allows setting custom instances, instances can be found here:
 ### Build
 
 - `npm run build`
-- `open web-ext-artifacts/`
+
+**Note:** After a successful building process, the new binary *ZIP* file will be inside the folder `web-ext-artifacts`
 
 ## Test
 
