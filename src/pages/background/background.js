@@ -274,6 +274,8 @@ function redirectYouTube(url, initiator, type) {
     return null;
   }
   if (useFreeTube && type === "main_frame") {
+    if (url.host === "youtu.be")
+      return `freetube://https://youtube.com/watch?v=${url.pathname.slice(1)}`
     return `freetube://${url}`;
   }
   // Apply settings
