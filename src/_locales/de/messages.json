@@ -91,6 +91,26 @@
     "message": "Dunklen Modus auf Invidious immer anschalten",
     "description": "Label for 'Invidious dark mode always on' option (options)."
   },
+  "invidiousVolume": {
+    "message": "Invidious-Lautstärke",
+    "description": "Label for 'Invidious Volume' option (options)."
+  },
+  "invidiousSubtitles": {
+    "message": "Sprachcodes für Invidious-Untertitel (Komma-getrennt)",
+    "description": "Label for 'Invidious Subtitles' option (options)."
+  },
+  "invidiousPlayerStyle": {
+    "message": "Player-Stil",
+    "description": "Label for 'Invidious Player Style' option (options)."
+  },
+  "invidiousAutoplay": {
+    "message": "Invidious-Videos automatisch spielen",
+    "description": "Label for 'Invidious automatically play video on load' option (options)."
+  },
+  "theme": {
+    "message": "Farb-Stil",
+    "description": "Label for 'Theme' option (options)."
+  },
   "persistInvidiousPrefs": {
     "message": "Invidious-Einstellungen dauerhaft beibehalten (als Cookie)",
     "description": "Label for 'Persist Invidious preferences (as cookie)' option (options)."
