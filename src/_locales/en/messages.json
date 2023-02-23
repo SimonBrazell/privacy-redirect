@@ -91,6 +91,26 @@
     "message": "Invidious dark mode always on",
     "description": "Label for 'Invidious dark mode always on' option (options)."
   },
+  "invidiousVolume": {
+    "message": "Invidious Volume",
+    "description": "Label for 'Invidious Volume' option (options)."
+  },
+  "invidiousSubtitles": {
+    "message": "Invidious Subtitles - language codes (comma-separated)",
+    "description": "Label for 'Invidious Subtitles' option (options)."
+  },
+  "invidiousPlayerStyle": {
+    "message": "Invidious Player Style",
+    "description": "Label for 'Invidious Player Style' option (options)."
+  },
+  "invidiousAutoplay": {
+    "message": "Invidious automatically play video on load",
+    "description": "Label for 'Invidious automatically play video on load' option (options)."
+  },
+  "theme": {
+    "message": "Theme",
+    "description": "Label for 'Theme' option (options)."
+  },
   "persistInvidiousPrefs": {
     "message": "Persist Invidious preferences (as cookie)",
     "description": "Label for 'Persist Invidious preferences (as cookie)' option (options)."
