@@ -23,6 +23,22 @@
     "message": "OpenStreetMap-Instanz",
     "description": "Label for OSM instance field option (options)."
   },
+  "redditInstance": {
+    "message": "Reddit-Instanz",
+    "description": "Label for Reddit instance field option (options)."
+  },
+  "searchEngineInstance": {
+    "message": "Suchmaschineninstanz",
+    "description": "Label for Search Engine instance field option (options)."
+  },
+  "simplyTranslateInstance": {
+    "message": "SimplyTranslate-Instanz",
+    "description": "Label for SimplyTranslate instance field option (options)."
+  },
+  "wikipediaInstance": {
+    "message": "Wikipedia-Instanz",
+    "description": "Label for Wikipedia instance field option (options)."
+  },
   "disableNitter": {
     "message": "Nitter-Weiterleitungen",
     "description": "Label for enable/disable Nitter redirects option (options & pop-up)."
@@ -38,6 +54,22 @@
   "disableOsm": {
     "message": "OpenStreetMap-Weiterleitungen",
     "description": "Label for enable/disable OSM redirects option (options & pop-up)."
+  },
+  "disableReddit": {
+    "message": "Reddit-Weiterleitungen",
+    "description": "Label for enable/disable Reddit redirects option (options & pop-up)."
+  },
+  "disableSearchEngine": {
+    "message": "Suchmaschinen-Weiterleitungen",
+    "description": "Label for enable/disable Search Engine redirects option (options & pop-up)."
+  },
+  "disableSimplyTranslate": {
+    "message": "SimplyTranslate-Weiterleitungen",
+    "description": "Label for enable/disable SimplyTranslate redirects option (options & pop-up)."
+  },
+  "disableWikipedia": {
+    "message": "Wikipedia-Weiterleitungen",
+    "description": "Label for enable/disable Wikipedia redirects option (options & pop-up)."
   },
   "alwaysProxy": {
     "message": "Videos immer durch Invidious-Proxy leiten",
@@ -59,12 +91,32 @@
     "message": "Dunklen Modus auf Invidious immer anschalten",
     "description": "Label for 'Invidious dark mode always on' option (options)."
   },
+  "invidiousVolume": {
+    "message": "Invidious-Lautstärke",
+    "description": "Label for 'Invidious Volume' option (options)."
+  },
+  "invidiousSubtitles": {
+    "message": "Sprachcodes für Invidious-Untertitel (Komma-getrennt)",
+    "description": "Label for 'Invidious Subtitles' option (options)."
+  },
+  "invidiousPlayerStyle": {
+    "message": "Player-Stil",
+    "description": "Label for 'Invidious Player Style' option (options)."
+  },
+  "invidiousAutoplay": {
+    "message": "Invidious-Videos automatisch spielen",
+    "description": "Label for 'Invidious automatically play video on load' option (options)."
+  },
+  "theme": {
+    "message": "Farb-Stil",
+    "description": "Label for 'Theme' option (options)."
+  },
   "persistInvidiousPrefs": {
     "message": "Invidious-Einstellungen dauerhaft beibehalten (als Cookie)",
     "description": "Label for 'Persist Invidious preferences (as cookie)' option (options)."
   },
   "generalTab": {
-    "message": "Allgmein",
+    "message": "Allgemein",
     "description": "General tab (options)."
   },
   "advancedTab": {
@@ -106,5 +158,25 @@
   "version": {
     "message": "Version",
     "description": "Version"
+  },
+  "useFreeTube": {
+    "message": "FreeTube vor Invidious bevorzugen",
+    "description": "Label for 'Use FreeTube over Invidious when possible' option (options)."
+  },
+  "nitterRandomPool": {
+    "message": "Nitter-Instanzen zur zufälligen Auswahl (Komma-getrennt)",
+    "description": "Label for 'Nitter random instance pool (comma-separated)' option (options)."
+  },
+  "invidiousRandomPool": {
+    "message": "Invidious-Instanzen zur zufälligen Auswahl (Komma-getrennt)",
+    "description": "Label for 'Invidious random instance pool (comma-separated)' option (options)."
+  },
+  "bibliogramRandomPool": {
+    "message": "Bibliogram-Instanzen zur zufälligen Auswahl (Komma-getrennt)",
+    "description": "Label for 'Bibliogram random instance pool (comma-separated)' option (options)."
+  },
+  "randomInstancePlaceholder": {
+    "message": "Zufällige Instanz (keine gewählt)",
+    "description": "Input placeholder for provider instance settings that select a random instance from a pool when none is selected"
   }
 }
