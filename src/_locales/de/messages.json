@@ -60,7 +60,7 @@
     "description": "Label for enable/disable Reddit redirects option (options & pop-up)."
   },
   "disableSearchEngine": {
-    "message": "Suchmaschinenweiterleitungen",
+    "message": "Suchmaschinen-Weiterleitungen",
     "description": "Label for enable/disable Search Engine redirects option (options & pop-up)."
   },
   "disableSimplyTranslate": {
