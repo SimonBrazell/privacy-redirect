@@ -30,7 +30,6 @@ const redirects = [
   "https://inv.skyn3t.in",
   "https://tube.incognet.io",
   "https://invidious.tinfoil-hat.net",
-  "https://invidious.namazso.eu",
   "https://vid.puffyan.us",
   "https://dev.viewtube.io",
   "https://invidious.048596.xyz",
