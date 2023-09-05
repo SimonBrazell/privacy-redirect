@@ -276,6 +276,12 @@ function redirectYouTube(url, initiator, type) {
   if (useFreeTube && type === "main_frame") {
     return `freetube://${url}`;
   }
+  if (url.host === "youtu.be" && !url.searchParams.has("v")) {
+    // add the video id of shortened if from the path, to the search params
+    url.searchParams.append("v", url.pathname.replace("/", "")); // only works as long as video id's can't contain "/"
+    url.searchParams.delete("si");
+    url.pathname = "/watch";
+  }
   // Apply settings
   if (alwaysProxy) {
     url.searchParams.append("local", true);
