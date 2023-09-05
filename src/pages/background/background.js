@@ -273,6 +273,13 @@ function redirectYouTube(url, initiator, type) {
   if (onlyEmbeddedVideo && type !== "sub_frame") {
     return null;
   }
+  if (url.host === "youtu.be" && !url.searchParams.has("v")) {
+    // add the video id of shortened if from the path, to the search params
+    // neither free tube nor invidious can work with shortened links till now
+    url.searchParams.append("v", url.pathname.replace("/", "")); // only works as long as video id's can't contain "/"
+    url.searchParams.delete("si");
+    url.pathname = "/watch";
+  }
   if (useFreeTube && type === "main_frame") {
     return `freetube://${url}`;
   }
